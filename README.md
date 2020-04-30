@@ -4,3 +4,9 @@
 Ein einfaches Programm, wo man die Reaktionszeit messen kann, indem man auf Kreise drückt.
 ## Aufgabe
 Programmiere ein Programm zum Messen der Reaktionszeit.
+
+## Installation
+1. Lade dir [git](https://git-scm.com/downloads) und processing herunter
+2. `git bash` in deinem Zielverzeichnis deiner Wahl (normalerweise reicht ein Rechtsklick)
+3. Gebe `git clone https://github.com/ifP1/Reaktionszeit` in die Kommandozeile ein.
+4. Starte die `Reaktionszeit.pde` Datei
