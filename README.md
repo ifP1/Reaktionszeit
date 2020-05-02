@@ -1,5 +1,8 @@
 # Reaktionszeit
-![CI](https://github.com/ifP1/Reaktionszeit/workflows/CI/badge.svg) ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/ifP1/Reaktionszeit?sort=semver) [![GitHub stars](https://img.shields.io/github/stars/ifP1/Reaktionszeit)](https://github.com/ifP1/Reaktionszeit/stargazers) [![GitHub issues](https://img.shields.io/github/issues/ifP1/Reaktionszeit)](https://github.com/ifP1/Reaktionszeit/issues) 
+[![CI](https://github.com/ifP1/Reaktionszeit/workflows/CI/badge.svg)](https://github.com/ifP1/Reaktionszeit/actions)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/ifP1/Reaktionszeit?sort=semver)](https://github.com/ifP1/Reaktionszeit/releases)
+[![GitHub stars](https://img.shields.io/github/stars/ifP1/Reaktionszeit)](https://github.com/ifP1/Reaktionszeit/stargazers) 
+[![GitHub issues](https://img.shields.io/github/issues/ifP1/Reaktionszeit)](https://github.com/ifP1/Reaktionszeit/issues) 
 
 Ein einfaches Programm, wo man die Reaktionszeit messen kann, indem man auf Kreise drückt.
 
