@@ -16,7 +16,7 @@ jobs:
         java-version: 11
     - uses: ifP1/setup-processing@v0.3.0
     - name: Building...
-      run: processing-java --sketch=$PWD --output=$HOME/out/build --build
+      run: processing-java --sketch=$PWD --output=$GITHUB_WORKSPACE/out/build --build
 
   build-windows:
     needs: [test]
@@ -28,7 +28,7 @@ jobs:
         java-version: 11
     - uses: ifP1/setup-processing@v0.3.0    
     - name: Exporting...
-      run: processing-java --sketch=$PWD --output=$HOME/out/export --no-java --platform 'windows' --export
+      run: processing-java --sketch=$PWD --output=$GITHUB_WORKSPACE/out/export --no-java --export --platform 'windows'
     - name: Creating an artifact of the export...
       uses: actions/upload-artifact@v2
       with:
@@ -45,11 +45,12 @@ jobs:
         java-version: 11
     - uses: ifP1/setup-processing@v0.3.0    
     - name: Exporting...
-      run: processing-java --sketch=$PWD --output=$HOME/out/export --no-java --platform 'macosx' --export
+      run: processing-java --sketch=$PWD --output=$GITHUB_WORKSPACE/out/export --no-java --export --platform 'macosx'
     - name: Creating an artifact of the export...
       uses: actions/upload-artifact@v2
       with:
         name: macosx_export
+        path: ~/out/export/
         
   build-linux:
     needs: [test]
@@ -61,9 +62,9 @@ jobs:
         java-version: 11
     - uses: ifP1/setup-processing@v0.3.0    
     - name: Exporting...
-      run: processing-java --sketch=$PWD --output=$HOME/out/export --no-java --platform 'linux' --export
+      run: processing-java --sketch=$PWD --output=$GITHUB_WORKSPACE/out/export --no-java --export --platform 'linux'
     - name: Creating an artifact of the export...
       uses: actions/upload-artifact@v2
       with:
-        name: linux
+        name: linux_export
         path: ~/out/export/
