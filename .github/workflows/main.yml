@@ -19,9 +19,12 @@ jobs:
       run: processing-java --sketch=$PWD --output=$PWD/out/build --build
     - name: Exporting...
       run: processing-java --sketch=$PWD --output=$PWD/out/export --export
+    - run: pwd
     - run: ls -lah
     - run: ls -lah $PWD/out/build
     - run: ls -lah $PWD/out/export
+    - run: cd
+    - run: pwd
     - name: Creating an artifact of the export...
       uses: actions/upload-artifact@v2
       with:
