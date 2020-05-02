@@ -14,12 +14,11 @@ jobs:
     - uses: actions/setup-java@v1.3.0
       with:
         java-version: 11
-    - uses: ifP1/setup-processing@v0.1.3
-    - run: pwd
+    - uses: ifP1/setup-processing@v0.2.0
     - name: Building...
-      run: processing-java --build --sketch=. --output=out/build
+      run: processing-java --build --sketch=$PWD --output=$PWD/out/build
     - name: Exporting...
-      run: processing-java --build --sketch=. --output=out/export
+      run: processing-java --build --sketch=$PWD --output=$PWD/out/export
     - name: Creating an artifact of the export...
       uses: actions/upload-artifact@v2
       with:
