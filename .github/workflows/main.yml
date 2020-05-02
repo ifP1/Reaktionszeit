@@ -14,7 +14,7 @@ jobs:
     - uses: actions/setup-java@v1.3.0
       with:
         java-version: 11
-    - uses: ifP1/setup-processing@v0.2.0
+    - uses: ifP1/setup-processing@v0.3.0
     - name: Building...
       run: processing-java --build --sketch=$PWD --output=$PWD/out/build
     - name: Exporting...
