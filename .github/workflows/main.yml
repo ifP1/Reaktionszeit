@@ -23,9 +23,9 @@ jobs:
     - run: ls -lah
     - run: ls -lah $PWD/out/build
     - run: ls -lah $PWD/out/export
-    - run: cd
+    - run: cd ~
     - run: pwd
     - name: Creating an artifact of the export...
       uses: actions/upload-artifact@v2
       with:
-        path: $PWD/out/export/
+        path: ~/out/export/
