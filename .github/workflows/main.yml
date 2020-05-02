@@ -22,15 +22,15 @@ jobs:
     - run: pwd
     - run: ls -lah
     - run: ls -lah ~
-    - run: ls -lah $PWD/out/build
-    - run: ls -lah $PWD/out/export
-    - run: ls -lah $PWD/out/export/Reaktionszeit
-    - run: ls -lah $PWD/out/export/lib
-    - run: ls -lah $PWD/out/export/source
-    - run: ls -lah $PWD/out/export/java
+    - run: ls -lah $HOME/out/build
+    - run: ls -lah $HOME/out/export
+    - run: ls -lah $HOME/out/export/Reaktionszeit
+    - run: ls -lah $HOME/out/export/lib
+    - run: ls -lah $HOME/out/export/source
+    - run: ls -lah $HOME/out/export/java
     - run: cd ~
     - run: pwd
     - name: Creating an artifact of the export...
       uses: actions/upload-artifact@v2
       with:
-        path: ~/out/export/lib/Reaktionszeit.jar
+        path: ~/out/export/
