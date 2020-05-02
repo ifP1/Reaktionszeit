@@ -28,7 +28,7 @@ jobs:
         java-version: 11
     - uses: ifP1/setup-processing@v0.3.0    
     - name: Exporting...
-      run: processing-java --sketch=$PWD --output=$HOME/out/export --no-java --platform windows --export
+      run: processing-java --sketch=$PWD --output=$HOME/out/export --no-java --platform 'windows' --export
     - name: Creating an artifact of the export...
       uses: actions/upload-artifact@v2
       with:
@@ -45,7 +45,7 @@ jobs:
         java-version: 11
     - uses: ifP1/setup-processing@v0.3.0    
     - name: Exporting...
-      run: processing-java --sketch=$PWD --output=$HOME/out/export --no-java --platform macosx --export
+      run: processing-java --sketch=$PWD --output=$HOME/out/export --no-java --platform 'macosx' --export
     - name: Creating an artifact of the export...
       uses: actions/upload-artifact@v2
       with:
@@ -61,7 +61,7 @@ jobs:
         java-version: 11
     - uses: ifP1/setup-processing@v0.3.0    
     - name: Exporting...
-      run: processing-java --sketch=$PWD --output=$HOME/out/export --no-java --platform linux --export
+      run: processing-java --sketch=$PWD --output=$HOME/out/export --no-java --platform 'linux' --export
     - name: Creating an artifact of the export...
       uses: actions/upload-artifact@v2
       with:
