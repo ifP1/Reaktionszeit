@@ -33,4 +33,4 @@ jobs:
     - name: Creating an artifact of the export...
       uses: actions/upload-artifact@v2
       with:
-        path: ~/out/export/
+        path: ~/out/export/lib
