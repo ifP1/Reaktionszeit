@@ -29,6 +29,7 @@ jobs:
     - uses: ifP1/setup-processing@v0.3.0    
     - name: Exporting...
       run: processing-java --sketch=$PWD --output=$GITHUB_WORKSPACE/out/export --no-java --export --platform 'windows'
+    - run: ls -lah $GITHUB_WORKSPACE/out/export
     - name: Creating an artifact of the export...
       uses: actions/upload-artifact@v2
       with:
@@ -46,6 +47,7 @@ jobs:
     - uses: ifP1/setup-processing@v0.3.0    
     - name: Exporting...
       run: processing-java --sketch=$PWD --output=$GITHUB_WORKSPACE/out/export --no-java --export --platform 'macosx'
+    - run: ls -lah $GITHUB_WORKSPACE/out/export
     - name: Creating an artifact of the export...
       uses: actions/upload-artifact@v2
       with:
@@ -63,6 +65,7 @@ jobs:
     - uses: ifP1/setup-processing@v0.3.0    
     - name: Exporting...
       run: processing-java --sketch=$PWD --output=$GITHUB_WORKSPACE/out/export --no-java --export --platform 'linux'
+    - run: ls -lah $GITHUB_WORKSPACE/out/export
     - name: Creating an artifact of the export...
       uses: actions/upload-artifact@v2
       with:
