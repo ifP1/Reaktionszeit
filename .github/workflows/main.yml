@@ -25,7 +25,7 @@ jobs:
       - name: Creating an artifact of the export...
         uses: actions/upload-artifact@v2
         with:
-          name: windows_export
+          name: ${{github.repository}}-windows
           path: ~/out/export/
         
   build-linux:
@@ -42,7 +42,7 @@ jobs:
       - name: Creating an artifact of the export...
         uses: actions/upload-artifact@v2
         with:
-          name: linux_export
+          name: ${{github.repository}}-linux
           path: ~/out/export/
 
   release:
@@ -56,12 +56,12 @@ jobs:
       - uses: actions/download-artifact@v2
       - run: ls -lah
       - run: ls -lah  
-      - run: ls -lah linux_export
-      - run: ls -lah windows_export
+      - run: ls -lah ${{github.repository}}-linux
+      - run: ls -lah ${{github.repository}}-windows
       - name: Compressing...
         run: |
-          tar -czvf linux_export.tar.gz linux_export/
-          zip -r windows_export windows_export/
+          tar -czvf ${{github.repository}}-linux.tar.gz ${{github.repository}}-linux/
+          zip -r ${{github.repository}}-windows ${{github.repository}}-windows/
       - name: GH Release
         uses: softprops/action-gh-release@v0.1.5
         with:
@@ -69,7 +69,7 @@ jobs:
           body_path: ${{github.workspace}}/CHANGELOG.md
           # Newline-delimited list of path globs for asset files to upload
           files: |
-            linux_export.tar.gz
-            windows_export.zip
+            ${{github.repository}}-linux.tar.gz
+            ${{github.repository}}-windows.zip
         env:
           GITHUB_TOKEN: ${{secrets.github}}
