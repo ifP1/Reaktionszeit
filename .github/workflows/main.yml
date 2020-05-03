@@ -53,6 +53,9 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/')
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          path: $HOME/out/export
       - name: GH Release
         uses: softprops/action-gh-release@v0.1.5
         with:
