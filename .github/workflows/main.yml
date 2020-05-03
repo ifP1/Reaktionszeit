@@ -33,23 +33,6 @@ jobs:
         with:
           name: windows_export
           path: ~/out/export/
-  
-  # build-macosx:
-  #   needs: [test]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - uses: ifP1/setup-processing@v0.3.0    
-  #     with:
-  #       version: '3.5.4'
-  #   - name: Exporting...
-  #     run: processing-java --sketch=$PWD --output=$HOME/out/export --no-java --platform=macosx --export
-  #   - run: ls -lah $HOME/out/export
-  #   - name: Creating an artifact of the export...
-  #     uses: actions/upload-artifact@v2
-  #     with:
-  #       name: macosx_export
-  #       path: ~/out/export/
         
   build-linux:
     needs: [test]
@@ -72,7 +55,7 @@ jobs:
     needs:
       - build-linux
       - build-windows
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/')
     steps:
       - name: Download a Build Artifact
@@ -89,4 +72,4 @@ jobs:
             '$HOME/out/export/linux_export'
             '$HOME/out/export/windows_export'
         env:
-          - GITHUB_TOKEN: ${{secrets.github}}
+          GITHUB_TOKEN: ${{secrets.github}}
