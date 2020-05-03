@@ -54,15 +54,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
-        with:
-          path: out/export
-      - run: ls -lah $GITHUB_WORKSPACE/out/export
-      - run: ls -lah $GITHUB_WORKSPACE/out/export/linux_export
-      - run: ls -lah $GITHUB_WORKSPACE/out/export/windows_export
+      - run: ls -lah
+      - run: ls -lah  
+      - run: ls -lah linux_export
+      - run: ls -lah windows_export
       - name: Compressing...
         run: |
-          tar -czvf linux_export.tar.gz $GITHUB_WORKSPACE/out/export/linux_export/
-          zip windows_export $GITHUB_WORKSPACE/out/export/windows_export/
+          tar -czvf linux_export.tar.gz linux_export/
+          zip windows_export windows_export/
       - name: GH Release
         uses: softprops/action-gh-release@v0.1.5
         with:
