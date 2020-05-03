@@ -1,4 +1,3 @@
-Release mit _**Markdown**_
+# Jetzt aber
 
-- [x] Sehr gut
-[ ] Nicht so
+- [x] CI/CD Pipeline komplett

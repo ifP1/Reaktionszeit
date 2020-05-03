@@ -30,8 +30,8 @@ jobs:
         run: processing-java --sketch=$PWD --output=${REPO_NAME_PATH}-linux --no-java --platform=linux --export
       - name: Compressing...
         run: |
-          tar -czvf ${REPO_NAME_PATH}-linux.tar.gz ${REPO_NAME_PATH}-linux/
-          zip -r ${REPO_NAME_PATH}-windows.zip ${REPO_NAME_PATH}-windows/
+          tar -czvf application-linux.tar.gz ${REPO_NAME_PATH}-linux/
+          zip -r application-windows.zip ${REPO_NAME_PATH}-windows/
       - name: GitHub Release
         uses: softprops/action-gh-release@v0.1.5
         with:
