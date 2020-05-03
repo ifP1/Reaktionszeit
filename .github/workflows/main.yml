@@ -61,7 +61,7 @@ jobs:
       - name: Compressing...
         run: |
           tar -czvf linux_export.tar.gz linux_export/
-          zip windows_export windows_export/
+          zip -r windows_export windows_export/
       - name: GH Release
         uses: softprops/action-gh-release@v0.1.5
         with:
