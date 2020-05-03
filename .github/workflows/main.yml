@@ -11,9 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-java@v1.3.0
-      with:
-        java-version: 11
     - uses: ifP1/setup-processing@v0.3.0
     - name: Building...
       run: processing-java --sketch=$PWD --output=$HOME/out/build --build
@@ -23,12 +20,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-java@v1.3.0
-      with:
-        java-version: 11
     - uses: ifP1/setup-processing@v0.3.0    
+      with:
+        version: '3.5.4'
     - name: Exporting...
-      run: processing-java --sketch=$PWD --output=$HOME/out/export --no-java --export --platform 'windows'
+      run: processing-java --sketch=$PWD --output=$HOME/out/export --no-java --platform=windows --export
     - run: ls -lah $HOME/out/export
     - name: Creating an artifact of the export...
       uses: actions/upload-artifact@v2
@@ -41,12 +37,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-java@v1.3.0
-      with:
-        java-version: 11
     - uses: ifP1/setup-processing@v0.3.0    
+      with:
+        version: '3.5.4'
     - name: Exporting...
-      run: processing-java --sketch=$PWD --output=$HOME/out/export --no-java --export --platform 'macosx'
+      run: processing-java --sketch=$PWD --output=$HOME/out/export --no-java --platform=macosx --export
     - run: ls -lah $HOME/out/export
     - name: Creating an artifact of the export...
       uses: actions/upload-artifact@v2
@@ -59,12 +54,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-java@v1.3.0
+    - uses: ifP1/setup-processing@v0.3.0
       with:
-        java-version: 11
-    - uses: ifP1/setup-processing@v0.3.0    
+        version: '3.5.4'
     - name: Exporting...
-      run: processing-java --sketch=$PWD --output=$HOME/out/export --no-java --export --platform 'linux'
+      run: processing-java --sketch=$PWD --output=$HOME/out/export --no-java --platform=linux --export
     - run: ls -lah $HOME/out/export
     - name: Creating an artifact of the export...
       uses: actions/upload-artifact@v2
