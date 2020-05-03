@@ -83,7 +83,7 @@ jobs:
         uses: softprops/action-gh-release@v0.1.5
         with:
           # Path to load note-worthy description of changes in release from
-          body_path: ${{home}}/out/export/CHANGELOG.md
+          body_path: ~/out/export/CHANGELOG.md
           # Newline-delimited list of path globs for asset files to upload
           files: |
             '$HOME/out/export/linux_export'
