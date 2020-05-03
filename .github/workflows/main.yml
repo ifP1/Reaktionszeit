@@ -57,6 +57,8 @@ jobs:
         with:
           path: out/export
       - run: ls -lah $GITHUB_WORKSPACE/out/export
+      - run: ls -lah $GITHUB_WORKSPACE/out/export/linux_export
+      - run: ls -lah $GITHUB_WORKSPACE/out/export/windows_export
       - name: Compressing...
         run: |
           tar -czvf linux_export.tar.gz $GITHUB_WORKSPACE/out/export/linux_export/
@@ -68,7 +70,7 @@ jobs:
           body_path: ${{github.workspace}}/CHANGELOG.md
           # Newline-delimited list of path globs for asset files to upload
           files: |
-            'linux_export.tar.gz'
-            'windows_export.zip'
+            linux_export.tar.gz
+            windows_export.zip
         env:
           GITHUB_TOKEN: ${{secrets.github}}
