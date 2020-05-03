@@ -37,7 +37,7 @@ jobs:
         with:
           body_path: ${{github.workspace}}/CHANGELOG.md
           files: |
-            $REPO_NAME_PATH-linux.tar.gz
-            $REPO_NAME_PATH-windows.zip
+            application-linux.tar.gz
+            application-windows.zip
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
