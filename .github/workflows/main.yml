@@ -68,7 +68,7 @@ jobs:
           body_path: ${{github.workspace}}/CHANGELOG.md
           # Newline-delimited list of path globs for asset files to upload
           files: |
-            '$GITHUB_WORKSPACE/out/export/linux_export'
-            '$GITHUB_WORKSPACE/out/export/windows_export'
+            'linux_export.tar.gz'
+            'windows_export.zip'
         env:
           GITHUB_TOKEN: ${{secrets.github}}
