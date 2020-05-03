@@ -56,6 +56,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           path: $HOME/out/export
+      - run: ls -lah $HOME/out/export
       - name: Compressing...
         run: |
           tar -czvf linux_export.tar.gz $HOME/out/export/linux_export/
