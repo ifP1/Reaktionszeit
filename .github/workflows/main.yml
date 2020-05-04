@@ -38,7 +38,6 @@ jobs:
       - name: GitHub Release
         uses: softprops/action-gh-release@v0.1.5
         with:
-          body_path: ${{github.workspace}}/CHANGELOG.md
           files: |
             *-linux.tar.gz
             *-windows.zip
