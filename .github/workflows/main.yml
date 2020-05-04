@@ -28,13 +28,13 @@ jobs:
         id: get_file
         run: echo ::set-output name=PREFIX::${GITHUB_REPOSITORY/$GITHUB_AUTHOR//}-${GITHUB_REF/refs\/tags\//}
       - name: Exporting windows application...
-        run: processing-java --sketch=$PWD --output=out/${steps.get_file.outputs.PREFIX}-windows --no-java --platform=windows --export
+        run: processing-java --sketch=$PWD --output=out/${{steps.get_file.outputs.PREFIX}}-windows --no-java --platform=windows --export
       - name: Exporting linux application...
-        run: processing-java --sketch=$PWD --output=out/${steps.get_file.outputs.PREFIX}-linux --no-java --platform=linux --export
+        run: processing-java --sketch=$PWD --output=out/${{steps.get_file.outputs.PREFIX}}-linux --no-java --platform=linux --export
       - name: Compressing...
         run: |
-          tar -czvf application-linux.tar.gz out/${steps.get_file.outputs.PREFIX}-linux/
-          zip -r application-windows.zip out/${steps.get_file.outputs.PREFIX}-windows/
+          tar -czvf application-linux.tar.gz out/${{steps.get_file.outputs.PREFIX}}-linux/
+          zip -r application-windows.zip out/${{steps.get_file.outputs.PREFIX}}-windows/
       - name: GitHub Release
         uses: softprops/action-gh-release@v0.1.5
         with:
