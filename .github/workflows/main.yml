@@ -26,7 +26,7 @@ jobs:
           version: 3.5.4
       - name: Get file prefix
         id: get_file
-        run: echo ::set-output name=PREFIX::${GITHUB_REPOSITORY/${{github.actor}}//}-${GITHUB_REF/refs\/tags\//}
+        run: echo ::set-output name=PREFIX::${GITHUB_REPOSITORY/${{ github.actor }}//}-${GITHUB_REF/refs\/tags\//}
       - name: Exporting windows application...
         run: processing-java --sketch=$PWD --output=out/${{steps.get_file.outputs.PREFIX}}-windows --no-java --platform=windows --export
       - name: Exporting linux application...
