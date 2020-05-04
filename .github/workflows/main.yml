@@ -69,4 +69,4 @@ jobs:
           user: "quang.thanh.ta"
           password: ${{ secrets.FTP_PASSWORD }}
           localDir: "artifact"
-          remoteDir: "/group/abi21.ifp1/Files/Java/Target"
+          remoteDir: "/group/abi21.ifp1/Files/Java/Target/Reaktionszeit"
