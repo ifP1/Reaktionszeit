@@ -33,6 +33,7 @@ jobs:
         run: processing-java --sketch=$PWD --output=out/${{steps.get_file.outputs.PREFIX}}-linux --no-java --platform=linux --export
       - name: Compressing and Packaging...
         run: |
+          echo ${{steps.get_file.outputs.PREFIX}}
           tar -czvf ${{steps.get_file.outputs.PREFIX}}-linux.tar.gz out/${{steps.get_file.outputs.PREFIX}}-linux/
           zip -r ${{steps.get_file.outputs.PREFIX}}-windows.zip out/${{steps.get_file.outputs.PREFIX}}-windows/
       - name: GitHub Release
