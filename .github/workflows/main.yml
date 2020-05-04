@@ -42,19 +42,19 @@ jobs:
         uses: actions/download-artifact@v2
       - run: ls -lah
       - run: ls -lah artifact
-      # - name: Compressing and Packaging...
-      #   run: |
-      #     cd out
-      #     tar -czvf ../${{steps.get_file.outputs.PREFIX}}-linux.tar.gz ${{steps.get_file.outputs.PREFIX}}-linux/
-      #     zip -r ../${{steps.get_file.outputs.PREFIX}}-windows.zip ${{steps.get_file.outputs.PREFIX}}-windows/
-      # - name: GitHub Release
-      #   uses: softprops/action-gh-release@v0.1.5
-      #   with:
-      #     files: |
-      #       *-linux*
-      #       *-windows*
-      #   env:
-      #     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Compressing and Packaging...
+        run: |
+          cd artifact
+          tar -czvf ../${{steps.get_file.outputs.PREFIX}}-linux.tar.gz ${{steps.get_file.outputs.PREFIX}}-linux/
+          zip -r ../${{steps.get_file.outputs.PREFIX}}-windows.zip ${{steps.get_file.outputs.PREFIX}}-windows/
+      - name: GitHub Release
+        uses: softprops/action-gh-release@v0.1.5
+        with:
+          files: |
+            *-linux.tar.gz
+            *-windows.zip
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
   # deploy:
   #   needs: [build]
