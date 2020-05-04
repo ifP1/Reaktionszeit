@@ -37,7 +37,7 @@ jobs:
           path: out/*
 
   release:
-    needs: [build, needs]
+    needs: [build, test]
     runs-on: ubuntu-latest
     steps:
       - name: Download a Build Artifact
