@@ -12,9 +12,6 @@ jobs:
           version: 3.5.4
       - name: Building...
         run: processing-java --sketch=$PWD --build
-      - name: Get the version
-        id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}  
         
   release:
     needs: [test]
@@ -27,8 +24,14 @@ jobs:
       - uses: ifP1/setup-processing@v1.0.2
         with:
           version: 3.5.4
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}  
+      - name: Get App Name
+        id: get_appname
+        run: echo ::set-output name=NAME::${GITHUB_REPOSITORY/$GITHUB_AUTHOR//}
       - name: Exporting windows application...
-        run: processing-java --sketch=$PWD --output=${REPO_NAME_PATH}-windows --no-java --platform=windows --export
+        run: processing-java --sketch=$PWD --output=${steps.get_appname.NAME}-${steps.get_version.VERSION}-windows --no-java --platform=windows --export
       - name: Exporting linux application...
         run: processing-java --sketch=$PWD --output=${REPO_NAME_PATH}-linux --no-java --platform=linux --export
       - name: Compressing...
@@ -40,7 +43,7 @@ jobs:
         with:
           body_path: ${{github.workspace}}/CHANGELOG.md
           files: |
-            application-linux.tar.gz
-            application-windows.zip
+            *-linux.tar.gz
+            *-windows.zip
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
