@@ -24,6 +24,9 @@ jobs:
       - uses: ifP1/setup-processing@v1.0.2
         with:
           version: 3.5.4
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
       - name: Exporting windows application...
         run: processing-java --sketch=$PWD --output=${REPO_NAME_PATH}-windows --no-java --platform=windows --export
       - name: Exporting linux application...
