@@ -5,11 +5,16 @@ on: push
 jobs:
   test:
     runs-on: ubuntu-latest
+    outputs:
+      PREFIX: ${{steps.get_file.outputs.PREFIX}}
     steps:
       - uses: actions/checkout@v2
       - uses: ifP1/setup-processing@v1.0.2
         with:
           version: 3.5.4
+      - name: Get file prefix
+        id: get_file
+        run: echo ::set-output name=PREFIX::${GITHUB_REPOSITORY/${{ github.repository_owner }}\//}-${GITHUB_REF/refs\/tags\//}
       - name: Building...
         run: processing-java --sketch=$PWD --build
         
@@ -22,20 +27,17 @@ jobs:
       - uses: ifP1/setup-processing@v1.0.2
         with:
           version: 3.5.4
-      - name: Get file prefix
-        id: get_file
-        run: echo ::set-output name=PREFIX::${GITHUB_REPOSITORY/${{ github.repository_owner }}\//}-${GITHUB_REF/refs\/tags\//}
       - name: Exporting windows application...
-        run: processing-java --sketch=$PWD --output=out/${{steps.get_file.outputs.PREFIX}}-windows --no-java --platform=windows --export
+        run: processing-java --sketch=$PWD --output=out/${{needs.test.outputs.PREFIX}}-windows --no-java --platform=windows --export
       - name: Exporting linux application...
-        run: processing-java --sketch=$PWD --output=out/${{steps.get_file.outputs.PREFIX}}-linux --no-java --platform=linux --export
+        run: processing-java --sketch=$PWD --output=out/${{needs.test.outputs.PREFIX}}-linux --no-java --platform=linux --export
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2
         with:
           path: out/*
 
   release:
-    needs: [build]
+    needs: [build, needs]
     runs-on: ubuntu-latest
     steps:
       - name: Download a Build Artifact
@@ -43,8 +45,8 @@ jobs:
       - name: Compressing and Packaging...
         run: |
           cd artifact
-          tar -czvf ../${{steps.get_file.outputs.PREFIX}}-linux.tar.gz ${{steps.get_file.outputs.PREFIX}}-linux/
-          zip -r ../${{steps.get_file.outputs.PREFIX}}-windows.zip ${{steps.get_file.outputs.PREFIX}}-windows/
+          tar -czvf ../${{needs.test.outputs.PREFIX}}-linux.tar.gz ${{needs.test.outputs.PREFIX}}-linux/
+          zip -r ../${{needs.test.outputs.PREFIX}}-windows.zip ${{needs.test.outputs.PREFIX}}-windows/
       - name: GitHub Release
         uses: softprops/action-gh-release@v0.1.5
         with:
