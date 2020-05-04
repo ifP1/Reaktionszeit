@@ -56,18 +56,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-  # deploy:
-  #   needs: [build]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: FTP Deploy
-  #       uses: SamKirkland/FTP-Deploy-Action@3.0.0
-  #       with:
-  #         # Deployment destination server & path. Formatted as protocol://domain.com:port/full/destination/path/
-  #         ftp-server: ftpes://gymnasium-melle.org:21/group/abi21.ifp1/Files/Java/Target
-  #         # FTP account username
-  #         ftp-username: quang.thanh.ta
-  #         # FTP account password
-  #         ftp-password: ${{secrets.FTP_PASSWORD}}
-  #         # The local folder to copy, defaults to root project folder
-  #         local-dir: # optional
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v2
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@3.0.0
+        with:
+          ftp-server: ftpes://gymnasium-melle.org:21/group/abi21.ifp1/Files/Java/Target
+          ftp-username: quang.thanh.ta
+          ftp-password: ${{secrets.FTP_PASSWORD}}
+          local-dir: artifact
