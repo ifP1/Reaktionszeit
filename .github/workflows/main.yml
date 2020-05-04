@@ -65,7 +65,7 @@ jobs:
       - name: Upload ftp
         uses: sebastianpopp/ftp-action@releases/v2
         with:
-          host: "ftpes://gymnasium-melle.org:21"
+          host: "ftp://gymnasium-melle.org:21"
           user: "quang.thanh.ta"
           password: ${{ secrets.FTP_PASSWORD }}
           localDir: "artifact"
