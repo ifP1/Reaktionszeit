@@ -32,35 +32,29 @@ jobs:
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2
         with:
-          # Artifact name
-          # name: # optional
-          # A file, directory or wildcard pattern that describes what to upload
           path: out/*
 
-  # release:
-  #   needs: [build]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Download a Build Artifact
-  #       uses: actions/download-artifact@v2
-  #       with:
-  #         # Artifact name
-  #         name: # optional
-  #         # Destination path
-  #         path: # optional
-  #     - name: Compressing and Packaging...
-  #       run: |
-  #         cd out
-  #         tar -czvf ../${{steps.get_file.outputs.PREFIX}}-linux.tar.gz ${{steps.get_file.outputs.PREFIX}}-linux/
-  #         zip -r ../${{steps.get_file.outputs.PREFIX}}-windows.zip ${{steps.get_file.outputs.PREFIX}}-windows/
-  #     - name: GitHub Release
-  #       uses: softprops/action-gh-release@v0.1.5
-  #       with:
-  #         files: |
-  #           *-linux*
-  #           *-windows*
-  #       env:
-  #         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  release:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v2
+      - run: ls -lah
+      - run: ls -lah artifact
+      # - name: Compressing and Packaging...
+      #   run: |
+      #     cd out
+      #     tar -czvf ../${{steps.get_file.outputs.PREFIX}}-linux.tar.gz ${{steps.get_file.outputs.PREFIX}}-linux/
+      #     zip -r ../${{steps.get_file.outputs.PREFIX}}-windows.zip ${{steps.get_file.outputs.PREFIX}}-windows/
+      # - name: GitHub Release
+      #   uses: softprops/action-gh-release@v0.1.5
+      #   with:
+      #     files: |
+      #       *-linux*
+      #       *-windows*
+      #   env:
+      #     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
   # deploy:
   #   needs: [build]
