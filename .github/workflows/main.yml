@@ -24,20 +24,17 @@ jobs:
       - uses: ifP1/setup-processing@v1.0.2
         with:
           version: 3.5.4
-      - name: Get the version
-        id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}  
-      - name: Get App Name
-        id: get_appname
-        run: echo ::set-output name=NAME::${GITHUB_REPOSITORY/$GITHUB_AUTHOR//}
+      - name: Get file prefix
+        id: get_file
+        run: echo ::set-output name=PREFIX::${GITHUB_REPOSITORY/$GITHUB_AUTHOR//}-${GITHUB_REF/refs\/tags\//}
       - name: Exporting windows application...
-        run: processing-java --sketch=$PWD --output=${steps.get_appname.NAME}-${steps.get_version.VERSION}-windows --no-java --platform=windows --export
+        run: processing-java --sketch=$PWD --output=out/${steps.get_file.PREFIX}-windows --no-java --platform=windows --export
       - name: Exporting linux application...
-        run: processing-java --sketch=$PWD --output=${REPO_NAME_PATH}-linux --no-java --platform=linux --export
+        run: processing-java --sketch=$PWD --output=out/${steps.get_file.PREFIX}-linux --no-java --platform=linux --export
       - name: Compressing...
         run: |
-          tar -czvf application-linux.tar.gz ${REPO_NAME_PATH}-linux/
-          zip -r application-windows.zip ${REPO_NAME_PATH}-windows/
+          tar -czvf application-linux.tar.gz out/${steps.get_file.PREFIX}-linux/
+          zip -r application-windows.zip out/${steps.get_file.PREFIX}-windows/
       - name: GitHub Release
         uses: softprops/action-gh-release@v0.1.5
         with:
@@ -45,5 +42,6 @@ jobs:
           files: |
             *-linux.tar.gz
             *-windows.zip
+            out/*
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
