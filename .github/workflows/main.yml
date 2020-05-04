@@ -62,10 +62,11 @@ jobs:
     steps:
       - name: Download a Build Artifact
         uses: actions/download-artifact@v2
-      - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@3.0.0
+     - name: Upload ftp
+        uses: sebastianpopp/ftp-action@releases/v2
         with:
-          ftp-server: ftpes://gymnasium-melle.org:21/group/abi21.ifp1/Files/Java/Target
-          ftp-username: quang.thanh.ta
-          ftp-password: ${{secrets.FTP_PASSWORD}}
-          local-dir: artifact
+          host: "ftpes://gymnasium-melle.org:21"
+          user: "quang.thanh.ta"
+          password: ${{ secrets.FTP_PASSWORD }}
+          localDir: "artifact"
+          remoteDir: "/group/abi21.ifp1/Files/Java/Target"
