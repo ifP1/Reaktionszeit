@@ -31,10 +31,10 @@ jobs:
         run: processing-java --sketch=$PWD --output=out/${{steps.get_file.outputs.PREFIX}}-windows --no-java --platform=windows --export
       - name: Exporting linux application...
         run: processing-java --sketch=$PWD --output=out/${{steps.get_file.outputs.PREFIX}}-linux --no-java --platform=linux --export
-      - name: Compressing...
+      - name: Compressing and Packaging...
         run: |
-          tar -czvf application-linux.tar.gz out/${{steps.get_file.outputs.PREFIX}}-linux/
-          zip -r application-windows.zip out/${{steps.get_file.outputs.PREFIX}}-windows/
+          tar -czvf ${{steps.get_file.outputs.PREFIX}}-linux.tar.gz out/${{steps.get_file.outputs.PREFIX}}-linux/
+          zip -r ${{steps.get_file.outputs.PREFIX}}-windows.zip out/${{steps.get_file.outputs.PREFIX}}-windows/
       - name: GitHub Release
         uses: softprops/action-gh-release@v0.1.5
         with:
