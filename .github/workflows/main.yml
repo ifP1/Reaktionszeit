@@ -40,8 +40,6 @@ jobs:
     steps:
       - name: Download a Build Artifact
         uses: actions/download-artifact@v2
-      - run: ls -lah
-      - run: ls -lah artifact
       - name: Compressing and Packaging...
         run: |
           cd artifact
