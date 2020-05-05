@@ -3,6 +3,7 @@
 Production | Development | Test | Release | Issues
 --- | --- | --- | --- | ---
 [![Production](https://github.com/ifP1/Reaktionszeit/workflows/Production/badge.svg)](https://github.com/ifP1/Reaktionszeit/actions?query=workflow%3AProduction) | [![Development](https://github.com/ifP1/Reaktionszeit/workflows/Development/badge.svg)](https://github.com/ifP1/Reaktionszeit/actions?query=workflow%3ADevelopment) | [![Test](https://github.com/ifP1/Reaktionszeit/workflows/Test/badge.svg)](https://github.com/ifP1/Reaktionszeit/actions?query=workflow%3ATest) | [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/ifP1/Reaktionszeit?sort=semver)](https://github.com/ifP1/Reaktionszeit/releases) | [![GitHub issues](https://img.shields.io/github/issues/ifP1/Reaktionszeit)](https://github.com/ifP1/Reaktionszeit/issues) 
+
 Ein einfaches Programm, wo man die Reaktionszeit messen kann, indem man auf Kreise drückt.
 
 ## Aufgabe
