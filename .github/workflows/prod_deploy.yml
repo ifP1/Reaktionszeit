@@ -16,6 +16,7 @@ jobs:
           version: 3.5.4
       - name: Building...
         run: processing-java --sketch=$PWD --build
+        
   build:
     needs: [test]
     runs-on: ubuntu-latest
