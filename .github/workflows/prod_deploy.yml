@@ -11,8 +11,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v')
-    outputs:
-      PREFIX: ${{steps.get_file.outputs.PREFIX}}
     steps:
       - uses: actions/checkout@v2
       - uses: ifP1/setup-processing@v1.0.2
