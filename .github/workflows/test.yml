@@ -7,8 +7,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    outputs:
-      PREFIX: ${{steps.get_file.outputs.PREFIX}}
     steps:
       - uses: actions/checkout@v2
       - uses: ifP1/setup-processing@v1.0.2
