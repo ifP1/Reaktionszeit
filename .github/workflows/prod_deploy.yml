@@ -72,8 +72,8 @@ jobs:
       - name: Upload ftp
         uses: sebastianpopp/ftp-action@releases/v2
         with:
-          host: "ftp://gymnasium-melle.org:21"
-          user: "quang.thanh.ta"
+          host: ${{secrets.FTP_HOST}}
+          user: ${{secrets.FTP_USER}}
           password: ${{ secrets.FTP_PASSWORD }}
           localDir: "out/txt"
-          remoteDir: "/group/abi21.ifp1/Files/Java/Target/Reaktionszeit"
+          remoteDir: ${{secrets.FTP_REMOTE_DIR}}
