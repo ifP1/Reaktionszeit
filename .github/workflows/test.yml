@@ -13,9 +13,6 @@ jobs:
       - uses: ifP1/setup-processing@v1.0.2
         with:
           version: 3.5.4
-      - name: Get file prefix
-        id: get_file
-        run: echo ::set-output name=PREFIX::${GITHUB_REPOSITORY/${{ github.repository_owner }}\//}-${GITHUB_REF/refs\/tags\//}
       - name: Building...
         run: processing-java --sketch=$PWD --build
         
