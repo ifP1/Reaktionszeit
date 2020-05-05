@@ -64,12 +64,15 @@ jobs:
       - uses: actions/checkout@v2
       - name: Generating .txt files
         run: |
-          mkdir
+          mkdir -p out/txt
+          for f in *.pde; do
+            cp "$f" "out/txt/${f//.pde/.txt}";
+          done
       - name: Upload ftp
         uses: sebastianpopp/ftp-action@releases/v2
         with:
           host: "ftp://gymnasium-melle.org:21"
           user: "quang.thanh.ta"
           password: ${{ secrets.FTP_PASSWORD }}
-          localDir: "artifact"
+          localDir: "out/txt"
           remoteDir: "/group/abi21.ifp1/Files/Java/Target/Reaktionszeit"
