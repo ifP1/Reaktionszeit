@@ -1,0 +1,49 @@
+name: Development
+
+on: 
+  push:
+    branches: [develop]
+
+jobs:
+  build:
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    outputs:
+      PREFIX: ${{steps.get_file.outputs.PREFIX}}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ifP1/setup-processing@v1.0.2
+        with:
+          version: 3.5.4
+      - name: Get file prefix
+        id: get_file
+        run: echo ::set-output name=PREFIX::${GITHUB_REPOSITORY/${{ github.repository_owner }}\//}-${GITHUB_REF/refs\/tags\//}
+      - name: Exporting windows application...
+        run: processing-java --sketch=$PWD --output=out/${{needs.build.outputs.PREFIX}}-windows --no-java --platform=windows --export
+      - name: Exporting linux application...
+        run: processing-java --sketch=$PWD --output=out/${{needs.build.outputs.PREFIX}}-linux --no-java --platform=linux --export
+      - name: Compressing and Packaging...
+        run: |
+          cd out
+          mkdir export
+          tar -czvf export/${{needs.build.outputs.PREFIX}}-linux.tar.gz ${{needs.build.outputs.PREFIX}}-linux/
+          zip -r export/${{needs.build.outputs.PREFIX}}-windows.zip ${{needs.build.outputs.PREFIX}}-windows/
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          path: out/export/*
+
+  release:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v2
+      - name: GitHub Release
+        uses: softprops/action-gh-release@v0.1.5
+        with:
+          files: |
+            artifact/*
+          prerelease: true
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
