@@ -2,6 +2,7 @@ name: Processing
 
 on: 
   - push
+  - pull-request
 
 jobs:
   test:
@@ -50,7 +51,7 @@ jobs:
       - name: GitHub Release
         uses: softprops/action-gh-release@v0.1.5
         with:
-          prerelease: contains(github.ref, '-')
+          prerelease: ${{contains(github.ref, '-')}}
           files: |
             artifact/*
         env:
