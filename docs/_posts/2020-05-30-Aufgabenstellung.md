@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: "Aufgabenstellung"
 date: 2020-05-30 19:00:00 -0100
 ---
