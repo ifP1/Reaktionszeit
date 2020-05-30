@@ -16,3 +16,12 @@ Finn | *"Lead Engineer"* | Macht die meiste Arbeit
 Marvin | *"Software Engineer"* | ...
 Kevin | *"Software Engineer"* | ...
 Thanh | *"Software Engineer"* | Kann an der Excelintegration, am Design arbeiten
+
+## Posts
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
