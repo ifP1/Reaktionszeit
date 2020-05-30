@@ -3,7 +3,7 @@ title: "Aufgaben zum 3. Juni"
 date: 2020-05-30 19:31:00 -0100
 layout: default
 ---
-<a href="/">&larr; Zurück zur Homepage</a>
+<a href="/Reaktionszeit">&larr; Zurück zur Homepage</a>
 # Aufgaben zum 3. Juni
 
 ## Gruppe Experten
