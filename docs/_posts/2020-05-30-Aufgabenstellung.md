@@ -1,6 +1,7 @@
 ---
+layout: page
 title: "Aufgabenstellung"
-date: 2020-05-30
+date: 2020-05-30 19:00:00 -0100
 ---
 
 Eine Gruppe von Hardcore-Informatikern, für die alles andere kalter Kaffee ist, zusammengestellt und im Rahmen eines Projektplans dann als Gruppe (!!!) arbeitend.
