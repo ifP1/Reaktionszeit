@@ -3,7 +3,7 @@ layout: default
 title: "Aufgabenstellung"
 date: 2020-05-30 19:00:00 -0100
 ---
-<a href="/Reaktionszeit">&larr; Zurück zur Homepage</a>
+<a href="https://ifP1.github.io/Reaktionszeit/">&larr; Zurück zur Homepage</a>
 # Aufgabenstellung
 
 Eine Gruppe von Hardcore-Informatikern, für die alles andere kalter Kaffee ist, zusammengestellt und im Rahmen eines Projektplans dann als Gruppe (!!!) arbeitend.
