@@ -14,7 +14,7 @@ Name | Rolle | Momentane Aufgabe
 Eric | Teamleiter *"Product Manager"* | Ist der Ansprechpartner für Herr Pavlowski
 Finn | *"Lead Engineer"* | Macht die meiste Arbeit
 Marvin | *"Software Engineer"* | ...
-Kevin | *"Software Engineer"* | ...
+Kevin | *"Software Engineer"* | macOS-Support?
 Thanh | *"Software Engineer"* | Kann an der Excelintegration, am Design arbeiten
 
 ## Posts
